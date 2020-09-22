@@ -1,51 +1,133 @@
 <template>
-  <div class="home">
-    <div class="top"></div>
-    <div class="intro">
-      <Header />
+  <div class="catchphrase">
+    <router-link to="/">
+      <img src="../assets/hangout.jpg" class="logo" />
+    </router-link>
+    <h2>Passionate about something? Let's meetup !</h2>
+    <div class="topbar-responsive-links">
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><a href="#" v-scroll-to="'#event'">Events</a></li>
+          <router-link to="/login">
+            <li>Sign in</li>
+          </router-link>
+        </ul>
+      </div>
     </div>
-    <img src="../assets/meetup.jpg" class="meet" />
-    <EventList :events="events" />
-    <Footer />
   </div>
 </template>
 
 <script>
-import Header from "../components/Header";
-import EventList from "../components/EventList";
-import Footer from "../components/Footer";
-import { mapGetters, mapActions } from "vuex";
-
-export default {
-  components: {
-    Header,
-    EventList,
-    Footer,
-  },
-  computed: mapGetters(["events"]),
-  methods: {
-    ...mapActions(["fetchEventList"]),
-  },
-  created() {
-    this.fetchEventList();
-  },
-};
+export default {};
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
-.top {
-  height: 60px;
+.catchphrase {
+  background-image: url("../assets/white-pattern-opac.jpg");
+  height: 120px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+img.logo {
+  height: 100px;
+  width: 150px;
+}
+h2 {
+  margin: auto 0;
+  font-size: 2rem;
+}
+a {
+  text-decoration: none;
+}
+li {
+  display: inline-block;
+  margin-right: 50px;
+  list-style-type: none;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     243deg,
     rgba(2, 0, 36, 1) 0%,
-    rgba(221, 80, 168, 1) 100%,
-    rgba(0, 212, 255, 1) 100%
+    rgba(249, 249, 249, 0.6475183823529411) 22%,
+    rgba(248, 237, 239, 1) 100%
   );
 }
 
-/* @media screen and (max-width: 39.9375em) {
+.topbar-responsive-links {
+  margin-top: 65px;
+}
+
+.topbar-responsive .topbar-responsive-logo {
+  color: black;
+  vertical-align: middle;
+}
+
+.topbar-responsive .menu a {
+  color: black;
+  transition: color 0.15s ease-in;
+  text-decoration: none;
+}
+
+.topbar-responsive .menu a:hover {
+  color: gray;
+}
+
+.menu {
+  margin-top: 20px;
+}
+/* img.logo {
+  height: 100px;
+  width: 150px;
+}
+
+li {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    243deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(249, 249, 249, 0.6475183823529411) 22%,
+    rgba(248, 237, 239, 1) 100%
+  );
+}
+
+.topbar-responsive-links {
+  margin-top: 65px;
+  list-style-type: none;
+}
+
+.topbar-responsive .topbar-responsive-logo {
+  color: black;
+  vertical-align: middle;
+}
+
+.topbar-responsive .menu a {
+  color: black;
+  transition: color 0.15s ease-in;
+  text-decoration: none;
+}
+
+.topbar-responsive .menu a:hover {
+  color: gray;
+}
+
+@media screen and (max-width: 39.9375em) {
   .topbar-responsive .menu a {
     padding: 0.875rem 0;
   }
@@ -159,16 +241,4 @@ img.profile {
   height: 30px;
   width: 30px;
 } */
-/*h2 {
-  margin: auto 0;
-  font-size: 3rem;
-}
-.home {
-  background-color: #ffe5cc;
-} 
-*/
-.meet {
-  width: 100%;
-  /*  height: 500px; */
-}
 </style>

@@ -1,0 +1,26 @@
+++++++ Dockerize vue app ++++++++
+
+1) Create docker image
+docker build -t project-meetup .
+
+2) Run the docker container
+docker run -it -p 8020:8080 --rm --name dockerize-project-mu project-meetup
+
+++++++ Push an existing docker image to Heroku +++++++++++
+Repeat the above process to rebuild the image for any changes made in vue app
+
+1) heroku container:login (if haven't logged in)
+2) docker tag project-meetup registry.heroku.com/dockerize-meetup-sharon/web
+3) docker push registry.heroku.com/dockerize-meetup-sharon/web
+4) heroku container:release --app dockerize-meetup-sharon web
+
+
+++++++ Dockerize file and upload to Heroku +++++++
+
+Heroku app name: dockerize-meetup-sharon
+
+1) heroku container:login
+2) docker build -t registry.heroku.com/dockerize-meetup-sharon/web .
+3) docker push registry.heroku.com/dockerize-meetup-sharon/web
+4) heroku container:release --app dockerize-meetup-sharon web
+
