@@ -4,9 +4,9 @@
     <div class="event-info">
       <img v-bind:src="require(`@/assets/${event.image}.jpg`)" />
     </div>
-    <p>{{event.name}}</p>
-    <p>{{event.time}}</p>
-    <p>{{event.details}}</p>
+    <p>{{ event.name }}</p>
+    <p>{{ event.time }}</p>
+    <p>{{ event.details }}</p>
     <div class="going">
       <AttendFooter :event="event" />
     </div>
@@ -25,16 +25,13 @@ export default {
     AttendFooter,
   },
   computed: {
-    ...mapGetters([/* "events", */ "getEventById"]),
+    ...mapGetters(["getEventById"]),
     event() {
       let id = parseInt(this.$route.params.id);
-      /* return this.$store.getters.events.find((event) => event.id === 
-	  id); */
       return this.getEventById(id);
     },
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

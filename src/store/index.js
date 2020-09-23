@@ -9,6 +9,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     events: [],
+    eventHistory: [],
+    user: { name: "", email: "" },
   },
   actions,
   mutations,

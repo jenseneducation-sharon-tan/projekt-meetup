@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render page when go to "/"  1`] = `
+<div
+  class="home"
+>
+  <div
+    class="top"
+  />
+   
+  <div
+    class="intro"
+  >
+    <div
+      class="catchphrase"
+    >
+      <a>
+        <img
+          class="logo"
+          src="../assets/hangout.jpg"
+        />
+      </a>
+       
+      <h2>
+        Passionate about something? Let's meetup !
+      </h2>
+       
+      <div
+        class="topbar-responsive-links"
+      >
+        <div
+          class="top-bar-right"
+        >
+          <ul
+            class="menu"
+          >
+            <li>
+              <a
+                href="#event"
+              >
+                Current Events
+              </a>
+            </li>
+             
+            <a>
+              <li>
+                Past Events
+              </li>
+            </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <img
+    class="meet"
+    src="../assets/meetup.jpg"
+  />
+   
+  <div
+    class="event-list-container"
+  >
+    <div
+      class="title"
+    >
+      <h2
+        id="event"
+      >
+        Upcoming events
+      </h2>
+    </div>
+     
+    <div
+      class="list-container"
+    />
+  </div>
+   
+  <div
+    class="footer"
+  >
+    <h2>
+      Contact us
+    </h2>
+     
+    <div
+      class="contact"
+    >
+      <div
+        class="mail"
+      >
+        <a
+          href="mailto:mailus@meetup.com"
+        >
+          mailus@meetup.com
+        </a>
+      </div>
+       
+      <div
+        class="call"
+      >
+        <a>
+          072-99 9999
+        </a>
+      </div>
+    </div>
+     
+    <span>
+      All rights reserved @ meetup.se
+    </span>
+  </div>
+</div>
+`;

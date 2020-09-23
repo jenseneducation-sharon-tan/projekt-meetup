@@ -7,9 +7,11 @@
     <div class="topbar-responsive-links">
       <div class="top-bar-right">
         <ul class="menu">
-          <li><a href="#" v-scroll-to="'#event'">Events</a></li>
-          <router-link to="/login">
-            <li>Sign in</li>
+          <li>
+            <a href="#event">Current Events</a>
+          </li>
+          <router-link to="/pastevents">
+            <li>Past Events</li>
           </router-link>
         </ul>
       </div>
