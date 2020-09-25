@@ -10,6 +10,9 @@ const getters = {
   eventHistory: (state) => {
     return state.eventHistory;
   },
+  attend: (state) => {
+    return state.attend;
+  },
 };
 
 export default getters;

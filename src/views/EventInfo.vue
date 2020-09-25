@@ -3,34 +3,37 @@
     <Header />
     <div class="event-info">
       <img v-bind:src="require(`@/assets/${event.image}.jpg`)" />
-    </div>
-    <p>{{ event.name }}</p>
-    <p>{{ event.time }}</p>
-    <p>{{ event.details }}</p>
-    <div class="going">
-      <AttendFooter :event="event" />
+      <p>{{ event.name }}</p>
+      <p>{{ event.time }}</p>
+      <p>{{ event.details }}</p>
+      <Button
+        :event="event"
+        title="Attend"
+        @click.native="attendEvent(event)"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Header from "../components/Header";
-
-import AttendFooter from "../components/AttendFooter";
-import { mapGetters } from "vuex";
+import Button from "../components/Button";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
     Header,
-    AttendFooter,
+    Button,
   },
+
   computed: {
-    ...mapGetters(["getEventById"]),
+    ...mapGetters(["getEventById", "attend"]),
     event() {
       let id = parseInt(this.$route.params.id);
       return this.getEventById(id);
     },
   },
+  methods: mapActions(["attendEvent"]),
 };
 </script>
 

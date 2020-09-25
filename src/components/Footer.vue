@@ -21,7 +21,13 @@ export default {};
 
 <style scoped>
 .footer {
-  background: #606060;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    243deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(221, 80, 168, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
   height: 120px;
   width: 100%;
   display: flex;

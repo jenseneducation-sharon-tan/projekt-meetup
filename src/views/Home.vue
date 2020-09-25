@@ -2,10 +2,13 @@
   <div class="home">
     <div class="top"></div>
     <div class="intro">
-      <Header />
+      <Header :mainpage="true" />
     </div>
     <img src="../assets/meetup.jpg" class="meet" />
+    <h2 id="event">{{ upcomingEvents }}</h2>
     <EventList :events="events" />
+    <h2 id="history">{{ pastEvents }}</h2>
+    <EventList :events="eventHistory" :review="true" />
     <Footer />
   </div>
 </template>
@@ -22,12 +25,19 @@ export default {
     EventList,
     Footer,
   },
-  computed: mapGetters(["events"]),
+  data: () => {
+    return {
+      upcomingEvents: "Upcoming Events",
+      pastEvents: "Past Events",
+    };
+  },
+  computed: mapGetters(["events", "eventHistory"]),
   methods: {
-    ...mapActions(["fetchEventList"]),
+    ...mapActions(["fetchEventList", "fetchPastEvents"]),
   },
   created() {
     this.fetchEventList();
+    this.fetchPastEvents();
   },
 };
 </script>
@@ -44,7 +54,10 @@ export default {
     rgba(0, 212, 255, 1) 100%
   );
 }
-
+h2 {
+  margin: auto 0;
+  font-size: 2rem;
+}
 .meet {
   width: 100%;
 }

@@ -3,7 +3,11 @@ const mutations = {
     state.events = events;
   },
   setHistory(state, history) {
-    state.pastEvents = history;
+    state.eventHistory = history;
+  },
+
+  setAttend(state, attend) {
+    state.attend = attend;
   },
 };
 

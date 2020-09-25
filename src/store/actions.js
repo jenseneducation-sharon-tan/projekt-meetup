@@ -9,7 +9,15 @@ const actions = {
 
   async fetchPastEvents({ commit }) {
     const data = await getPastEvents();
-    commit("setHistory", data.eventHistory);
+    commit("setHistory", data.history);
+  },
+
+  attendEvent({ state, commit }, event) {
+    let attendEvent = state.attend;
+    attendEvent.push(event);
+    commit("setAttend", attendEvent);
+    const parsed = JSON.stringify(attendEvent);
+    localStorage.setItem("attend-list", parsed);
   },
 };
 

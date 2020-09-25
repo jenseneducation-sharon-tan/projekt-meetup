@@ -1,22 +1,23 @@
 <template>
   <div class="event-container">
-    <!-- <router-link v-bind:to="'/eventinfo/' + event.id"> -->
     <img v-bind:src="require(`@/assets/${event.image}.jpg`)" />
     <div class="event-details">
       <div class="date-time-container">
-        <p class="date">{{event.date}}</p>
-        <p class="time">{{event.time}}</p>
+        <p class="date">{{ event.date }}</p>
+        <p class="time">{{ event.time }}</p>
       </div>
-      <p class="event-name">{{event.name}}</p>
-      <p class="number-attendees">{{event.attendees}}</p>
+      <p class="event-name">{{ event.name }}</p>
+      <p class="number-attendees">Participants: {{ event.attendees }}</p>
     </div>
-    <!--   </router-link> -->
+    <Button title="Leave a review" :event="event" v-if="review" />
   </div>
 </template>
 
 <script>
+import Button from "../components/Button";
 export default {
-  props: ["event"],
+  components: { Button },
+  props: ["event", "review"],
 };
 </script>
 
@@ -34,7 +35,8 @@ export default {
 
 img {
   width: 280px;
-  height: 180px;
+  height: 200px;
+  padding: 10px;
 }
 .event-details {
   display: grid;

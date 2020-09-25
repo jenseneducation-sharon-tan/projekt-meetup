@@ -10,7 +10,8 @@ export default new Vuex.Store({
   state: {
     events: [],
     eventHistory: [],
-    user: { name: "", email: "" },
+    attend: [],
+    review: [],
   },
   actions,
   mutations,

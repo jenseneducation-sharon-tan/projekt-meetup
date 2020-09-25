@@ -1,18 +1,27 @@
 <template>
   <div class="event-list-container">
-    <div class="title">
-      <h2 id="event">Upcoming events</h2>
-    </div>
     <div class="list-container">
-      <div
-        class="event-list"
-        v-for="event in events"
-        :key="event.id"
-        :event="event"
-      >
-        <router-link :to="'/eventinfo/' + event.id">
-          <Event :event="event" />
-        </router-link>
+      <div class="going" v-if="!review">
+        <div
+          class="event-list"
+          v-for="event in events"
+          :key="event.id"
+          :event="event"
+        >
+          <router-link :to="'/eventinfo/' + event.id">
+            <Event :event="event" :review="review" />
+          </router-link>
+        </div>
+      </div>
+      <div class="review" v-else>
+        <div
+          class="history"
+          v-for="event in events"
+          :key="event.id"
+          :event="event"
+        >
+          <Event :event="event" :review="review" />
+        </div>
       </div>
     </div>
   </div>
@@ -22,13 +31,14 @@
 import Event from "@/components/Event";
 export default {
   components: { Event },
-  props: ["events"],
+  props: ["events", "review"],
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Crete+Round&family=Hammersmith+One&family=Rubik+Mono+One&display=swap");
-.list-container {
+.going,
+.review {
   width: 100%;
   display: flex;
   flex-wrap: wrap;

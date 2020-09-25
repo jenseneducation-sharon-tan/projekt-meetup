@@ -1,7 +1,7 @@
 const defaultData = {
   history: [
     {
-      id: 1,
+      id: 9,
       name: "Afterwork kayaking",
       image: "kayak",
       date: "THU, APR 17,",
@@ -12,8 +12,8 @@ const defaultData = {
       attendees: 8,
     },
     {
-      id: 2,
-      name: "Wedding photograpy",
+      id: 10,
+      name: "Wedding planning - The must know",
       image: "wedding",
       date: "TUE, JAN 20,",
       time: " 14:00",
@@ -23,11 +23,11 @@ const defaultData = {
       attendees: 15,
     },
     {
-      id: 3,
-      name: "Jazz ",
-      image: "amigurumi",
+      id: 11,
+      name: "Jazz nite",
+      image: "jazz",
       date: "SUN, MAR 20,",
-      time: " 09:30",
+      time: " 19:30",
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
