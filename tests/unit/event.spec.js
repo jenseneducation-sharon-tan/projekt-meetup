@@ -13,7 +13,7 @@ describe("Event", () => {
     image: "meditate",
     date: "THU, SEPT 17,",
     time: " 17:30",
-    attendees: 10,
+    attendees: "10",
   };
   let wrapper;
 
@@ -27,7 +27,7 @@ describe("Event", () => {
     const expectedName = "Meditation and well-being";
     const expectedDate = "THU, SEPT 17,";
     const expectedTime = "17:30";
-    const expectedAttendees = "10";
+    const expectedAttendees = "Participants: 10";
     const eventName = wrapper.find(".event-name").text();
     const eventDate = wrapper.find(".date").text();
     const eventTime = wrapper.find(".time").text();

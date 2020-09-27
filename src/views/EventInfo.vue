@@ -3,13 +3,14 @@
     <Header />
     <div class="event-info">
       <img v-bind:src="require(`@/assets/${event.image}.jpg`)" />
-      <p>{{ event.name }}</p>
-      <p>{{ event.time }}</p>
-      <p>{{ event.details }}</p>
+      <p class="name">{{ event.name }}</p>
+      <p class="time">{{ event.time }}</p>
+      <p class="details">{{ event.details }}</p>
       <Button
         :event="event"
-        title="Attend"
+        :title="attendButton"
         @click.native="attendEvent(event)"
+        :class="{ isGoing: isGoing == event.id }"
       />
     </div>
   </div>
@@ -27,7 +28,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["getEventById", "attend"]),
+    ...mapGetters(["getEventById", "attendList", "attendButton", "isGoing"]),
     event() {
       let id = parseInt(this.$route.params.id);
       return this.getEventById(id);
@@ -37,4 +38,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.isGoing {
+  color: white;
+  background: green;
+}
+</style>

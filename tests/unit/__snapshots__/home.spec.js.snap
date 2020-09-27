@@ -42,13 +42,17 @@ exports[`Home should render page when go to "/"  1`] = `
               </a>
             </li>
              
-            <a>
-              <li>
+            <li>
+              <a
+                href="#history"
+              >
                 Past Events
-              </li>
-            </a>
+              </a>
+            </li>
           </ul>
         </div>
+         
+        <!---->
       </div>
     </div>
   </div>
@@ -58,22 +62,40 @@ exports[`Home should render page when go to "/"  1`] = `
     src="../assets/meetup.jpg"
   />
    
+  <h2
+    id="event"
+  >
+    Upcoming Events
+  </h2>
+   
   <div
     class="event-list-container"
   >
     <div
-      class="title"
+      class="list-container"
     >
-      <h2
-        id="event"
-      >
-        Upcoming events
-      </h2>
+      <div
+        class="going"
+      />
     </div>
-     
+  </div>
+   
+  <h2
+    id="history"
+  >
+    Past Events
+  </h2>
+   
+  <div
+    class="event-list-container"
+  >
     <div
       class="list-container"
-    />
+    >
+      <div
+        class="review"
+      />
+    </div>
   </div>
    
   <div

@@ -1,10 +1,12 @@
 <template>
-  <button>{{ title }}</button>
+  <button>
+    {{ title }}
+  </button>
 </template>
 
 <script>
 export default {
-  props: ["event", "title"],
+  props: ["title"],
 };
 </script>
 

@@ -7,8 +7,18 @@ const mutations = {
   },
 
   setAttend(state, attend) {
-    state.attend = attend;
+    state.attendList = attend;
   },
+
+  setIsGoing(state) {
+    state.isGoing = !state.isGoing;
+  },
+  showReview(state) {
+    state.writeReview = !state.writeReview;
+  },
+  /* setReview(state, event) {
+    state.reviewList = event;
+  }, */
 };
 
 export default mutations;

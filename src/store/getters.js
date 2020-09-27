@@ -10,8 +10,23 @@ const getters = {
   eventHistory: (state) => {
     return state.eventHistory;
   },
-  attend: (state) => {
-    return state.attend;
+  attendList: (state) => {
+    return state.attendList;
+  },
+  attendButton: (state) => {
+    return state.attendButton;
+  },
+  reviewButton: (state) => {
+    return state.reviewButton;
+  },
+  isGoing: (state) => {
+    return state.isGoing;
+  },
+  reviewList: (state) => {
+    return state.reviewList;
+  },
+  writeReview: (state) => {
+    return state.writeReview;
   },
 };
 

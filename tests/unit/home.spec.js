@@ -13,8 +13,14 @@ describe("Home", () => {
   const store = new Vuex.Store({
     modules: {
       module: {
-        getters: { events: () => jest.fn() },
-        actions: { fetchEventList: () => jest.fn() },
+        getters: {
+          events: () => jest.fn(),
+          eventHistory: () => jest.fn(),
+        },
+        actions: {
+          fetchEventList: () => jest.fn(),
+          fetchPastEvents: () => jest.fn(),
+        },
       },
     },
   });
@@ -56,6 +62,7 @@ describe("Home", () => {
         Footer,
       },
     });
+
     // find eventlist component
     const eventListComponent = wrapper.findComponent(EventList);
 

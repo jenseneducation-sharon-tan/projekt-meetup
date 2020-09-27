@@ -9,15 +9,29 @@
       <p class="event-name">{{ event.name }}</p>
       <p class="number-attendees">Participants: {{ event.attendees }}</p>
     </div>
-    <Button title="Leave a review" :event="event" v-if="review" />
+    <Button
+      :title="reviewButton"
+      :event="event"
+      v-if="review"
+      @click.native="showCommentBox(event.id)"
+    />
+    <div class="comments" v-if="review">
+      <Review v-if="writeReview" />
+    </div>
   </div>
 </template>
 
 <script>
-import Button from "../components/Button";
+import Button from "@/components/Button";
+import Review from "@/components/Review";
+import { mapGetters, mapActions } from "vuex";
 export default {
-  components: { Button },
+  components: { Button, Review },
   props: ["event", "review"],
+  computed: {
+    ...mapGetters(["reviewButton", "writeReview"]),
+  },
+  methods: mapActions(["showCommentBox"]),
 };
 </script>
 
