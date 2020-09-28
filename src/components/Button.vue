@@ -7,20 +7,6 @@
 <script>
 export default {
   props: ["title", "event"],
-  /*  data() {
-    return {
-      showGoingButton: false,
-    };
-  },
-  created() {
-    let attendList = this.$store.state.attendList;
-    let attended = attendList.find((id) => id == event.id);
-    if (attended) {
-      this.showGoingButton = true;
-    } else {
-      this.showGoingButton = false;
-    }
-  }, */
 };
 </script>
 

@@ -12,7 +12,6 @@ export default new Vuex.Store({
     eventHistory: [],
     attendList: [],
     reviewList: [],
-    comment: "",
     writeReview: false,
     isGoing: false,
     hide: false,

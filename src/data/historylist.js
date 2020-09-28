@@ -36,7 +36,6 @@ const defaultData = {
   ],
 };
 
-// Försök 2, localStorage
 function getPastEvents() {
   const LS_KEY = "viewlist-history";
   let fromLs = localStorage.getItem(LS_KEY);
@@ -48,16 +47,5 @@ function getPastEvents() {
 
   return JSON.parse(fromLs);
 }
-
-/*
-  // Försök 1, enklast möjliga
-  function getAnimals() {
-	  return [
-		  { id: 1, animal: 'häst', from: 'Norge' },
-		  { id: 2, animal: 'ekorre', from: 'Schweiz' },
-		  { id: 3, animal: 'giraff', from: 'Kenya' },
-		  { id: 5, animal: 'yeti', from: 'Alperna' }
-	  ]
-  }*/
 
 export { getPastEvents };

@@ -57,7 +57,6 @@ export default {
       if (storage.length != 0) {
         let attended = storage.find((id) => id == this.event.id);
         console.log(this.event.id);
-        console.log("attended: ", attended);
         if (attended) {
           going = true;
         } else {

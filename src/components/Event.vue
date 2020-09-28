@@ -9,15 +9,28 @@
       <p class="event-name">{{ event.name }}</p>
       <p class="number-attendees">Participants: {{ event.attendees }}</p>
     </div>
-    <Button
-      :title="reviewButton"
-      :event="event"
-      v-if="review"
-      @click.native="showCommentBox(event)"
-      :class="{ hidden: hide }"
-    />
+    <div class="show-going">
+      <Button
+        :event="event"
+        :title="willAttendButton"
+        v-if="confirmGoing"
+        class="isGoing"
+      />
+    </div>
     <div class="comments" v-if="review">
-      <Review v-if="writeReview" />
+      <Button
+        :title="reviewButton"
+        :event="event"
+        v-if="writeReview !== event.id"
+        @click.native="showCommentBox(event.id)"
+      />
+      <div class="comments" v-if="review">
+        <Review
+          v-if="writeReview == event.id"
+          :eventId="event.id"
+          :displayReviewList="showReviews"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -28,11 +41,56 @@ import Review from "@/components/Review";
 import { mapGetters, mapActions } from "vuex";
 export default {
   components: { Button, Review },
+
   props: ["event", "review"],
-  computed: {
-    ...mapGetters(["reviewButton", "writeReview", "hide"]),
+  data() {
+    return {
+      going: false,
+    };
   },
-  methods: mapActions(["showCommentBox"]),
+  computed: {
+    ...mapGetters([
+      "reviewButton",
+      "writeReview",
+      "hide",
+      "willAttendButton",
+      "isGoing",
+      "reviewList",
+    ]),
+    confirmGoing() {
+      let storage = this.$store.state.attendList;
+      let going;
+      if (storage.length != 0) {
+        let attended = storage.find((id) => id == this.event.id);
+        if (attended) {
+          going = true;
+        } else {
+          going = false;
+        }
+      } else {
+        going = false;
+      }
+      return going;
+    },
+
+    showReviews() {
+      let reviewList = this.$store.state.reviewList;
+      let selectedEventToComment = reviewList.filter(
+        (item) => item.eventId == this.event.id
+      );
+      return selectedEventToComment;
+    },
+  },
+  methods: mapActions([
+    "showCommentBox",
+    "attendEvent",
+    "getAttendList",
+    "fetchReviewList",
+  ]),
+  created() {
+    this.getAttendList();
+    this.fetchReviewList();
+  },
 };
 </script>
 
@@ -82,6 +140,14 @@ p,
   font-size: 1.2rem;
 }
 .hidden {
-  visibility: hidden;
+  display: none;
+}
+
+button {
+  margin-left: 40px;
+}
+.isGoing {
+  color: white;
+  background: green;
 }
 </style>

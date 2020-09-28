@@ -37,10 +37,6 @@ const getters = {
   showAttend: (state) => {
     state.showAttend;
   },
-
-  /*  comment: (state) => {
-    return state.comment;
-  }, */
 };
 
 export default getters;

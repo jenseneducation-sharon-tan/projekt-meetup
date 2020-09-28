@@ -12,7 +12,17 @@ const actions = {
     commit("setHistory", data.history);
   },
 
-  async attendEvent({ commit, state, dispatch }, id) {
+  fetchReviewList({ commit }) {
+    let reviewList;
+    const LS_KEY = "review-list";
+    let fromLs = localStorage.getItem(LS_KEY);
+    if (fromLs) {
+      reviewList = JSON.parse(fromLs);
+      commit("setDisplayReview", reviewList);
+    }
+  },
+
+  attendEvent({ commit, state }, id) {
     let attendEvent = state.attendList;
     let addEvent = attendEvent.find((item) => item == id);
 
@@ -20,8 +30,7 @@ const actions = {
       attendEvent.push(id);
       const parsed = JSON.stringify(attendEvent);
       localStorage.setItem("attend-list", parsed);
-      await commit("setAttend", attendEvent);
-      dispatch("getAttendList");
+      commit("setAttend", attendEvent);
     }
   },
 
@@ -29,20 +38,24 @@ const actions = {
     let attendList;
     const LS_KEY = "attend-list";
     let fromLs = localStorage.getItem(LS_KEY);
-    console.log("fromLS: ", fromLs);
+
     if (fromLs) {
       attendList = JSON.parse(fromLs);
       commit("setGetAttendList", attendList);
     }
   },
 
-  showCommentBox({ commit, state } /* , event */) {
-    state.noDisplay = true;
-    commit("showReview");
+  showCommentBox({ commit, state }, id) {
+    let pastEventList = state.eventHistory;
+    let clickedEvent = pastEventList.find((item) => item.id == id);
+
+    if (clickedEvent.id) {
+      commit("showReview", id);
+    }
   },
 
-  setAddComment({ commit }, comment) {
-    commit("setThisComment", comment);
+  addNewReview({ commit }, review) {
+    commit("setNewReview", review);
   },
 };
 

@@ -14,28 +14,28 @@ const mutations = {
     state.isGoing = !state.isGoing;
   },
 
-  showReview(state) {
-    state.writeReview = !state.writeReview;
+  showReview(state, id) {
+    state.writeReview = id;
   },
 
   sethide(state) {
     state.hide = !state.hide;
   },
 
-  setThisComment(state, comment) {
-    state.comment = comment;
-    console.log(state.comment);
+  setNewReview(state, review) {
+    let reviewList = state.reviewList;
+    reviewList.push(review);
+    const parsed = JSON.stringify(reviewList);
+    localStorage.setItem("review-list", parsed);
   },
 
   setGetAttendList(state, list) {
     state.attendList = list;
   },
-  /*  setShowAttend(state) {
-    state.showAttend = !state.showAttend;
-  }, */
-  /* setReview(state, event) {
-    state.reviewList = event;
-  }, */
+
+  setDisplayReview(state, reviewList) {
+    state.reviewList = reviewList;
+  },
 };
 
 export default mutations;
