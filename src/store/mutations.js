@@ -13,9 +13,26 @@ const mutations = {
   setIsGoing(state) {
     state.isGoing = !state.isGoing;
   },
+
   showReview(state) {
     state.writeReview = !state.writeReview;
   },
+
+  sethide(state) {
+    state.hide = !state.hide;
+  },
+
+  setThisComment(state, comment) {
+    state.comment = comment;
+    console.log(state.comment);
+  },
+
+  setGetAttendList(state, list) {
+    state.attendList = list;
+  },
+  /*  setShowAttend(state) {
+    state.showAttend = !state.showAttend;
+  }, */
   /* setReview(state, event) {
     state.reviewList = event;
   }, */

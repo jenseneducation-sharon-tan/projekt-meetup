@@ -20,7 +20,7 @@
           :key="event.id"
           :event="event"
         >
-          <Event :event="event" :review="review" />
+          <Event :event="event" :review="review" class="past" />
         </div>
       </div>
     </div>

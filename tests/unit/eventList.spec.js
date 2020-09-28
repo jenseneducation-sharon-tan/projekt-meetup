@@ -1,12 +1,14 @@
 import { mount, RouterLinkStub, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import EventList from "@/components/EventList.vue";
+import Button from "@/components/Button.vue";
+import Review from "@/components/Review.vue";
 
 import VueRouter from "vue-router";
 
 const localVue = createLocalVue();
-localVue.use(VueRouter, Vuex);
 const router = new VueRouter();
+localVue.use(Vuex, VueRouter);
 
 describe("EventList", () => {
   it("should show 8 events when rendering", () => {
@@ -90,5 +92,46 @@ describe("EventList", () => {
     const expected = 8;
     const actual = wrapper.findAll(".event-container").length;
     expect(actual).toBe(expected);
+  });
+  it("it renders button component in child event component", () => {
+    const store = new Vuex.Store({
+      modules: {
+        module: {
+          getters: {
+            reviewButton: () => jest.fn(),
+            writeReview: () => jest.fn(),
+            hide: () => jest.fn(),
+          },
+        },
+      },
+    });
+
+    let wrapper, events;
+    events = [
+      {
+        id: 1,
+        name: "Meditation and well-being",
+        image: "meditate",
+        date: "THU, SEPT 17,",
+        time: " 17:30",
+        attendees: 10,
+      },
+    ];
+
+    wrapper = mount(EventList, {
+      store,
+      propsData: { events, review: true },
+      localVue,
+      router,
+      stubs: {
+        RouterLink: RouterLinkStub,
+        Review,
+      },
+    });
+
+    const eventComponent = wrapper.find(".past");
+    const reviewButton = eventComponent.findComponent(Button);
+
+    expect(reviewButton.exists()).toBe(true);
   });
 });

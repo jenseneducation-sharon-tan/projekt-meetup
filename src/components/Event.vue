@@ -13,7 +13,8 @@
       :title="reviewButton"
       :event="event"
       v-if="review"
-      @click.native="showCommentBox(event.id)"
+      @click.native="showCommentBox(event)"
+      :class="{ hidden: hide }"
     />
     <div class="comments" v-if="review">
       <Review v-if="writeReview" />
@@ -29,7 +30,7 @@ export default {
   components: { Button, Review },
   props: ["event", "review"],
   computed: {
-    ...mapGetters(["reviewButton", "writeReview"]),
+    ...mapGetters(["reviewButton", "writeReview", "hide"]),
   },
   methods: mapActions(["showCommentBox"]),
 };
@@ -55,6 +56,12 @@ img {
 .event-details {
   display: grid;
   grid-template-rows: repeat(4, auto);
+  padding: 20px;
+}
+
+p,
+.number-attendees {
+  margin-bottom: 5px;
 }
 .date-time-container {
   display: flex;
@@ -73,5 +80,8 @@ img {
   margin: 0;
 
   font-size: 1.2rem;
+}
+.hidden {
+  visibility: hidden;
 }
 </style>

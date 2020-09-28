@@ -16,6 +16,9 @@ const getters = {
   attendButton: (state) => {
     return state.attendButton;
   },
+  willAttendButton: (state) => {
+    return state.willAttendButton;
+  },
   reviewButton: (state) => {
     return state.reviewButton;
   },
@@ -28,6 +31,16 @@ const getters = {
   writeReview: (state) => {
     return state.writeReview;
   },
+  hide: (state) => {
+    return state.hide;
+  },
+  showAttend: (state) => {
+    state.showAttend;
+  },
+
+  /*  comment: (state) => {
+    return state.comment;
+  }, */
 };
 
 export default getters;

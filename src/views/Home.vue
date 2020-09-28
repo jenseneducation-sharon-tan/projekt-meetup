@@ -57,6 +57,7 @@ export default {
 h2 {
   margin: auto 0;
   font-size: 2rem;
+  padding: 20px 30px;
 }
 .meet {
   width: 100%;

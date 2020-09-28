@@ -6,7 +6,21 @@
 
 <script>
 export default {
-  props: ["title"],
+  props: ["title", "event"],
+  /*  data() {
+    return {
+      showGoingButton: false,
+    };
+  },
+  created() {
+    let attendList = this.$store.state.attendList;
+    let attended = attendList.find((id) => id == event.id);
+    if (attended) {
+      this.showGoingButton = true;
+    } else {
+      this.showGoingButton = false;
+    }
+  }, */
 };
 </script>
 
@@ -28,6 +42,7 @@ button {
   text-shadow: 0px 1px 0px #ffffff;
   width: 200px;
   height: 50px;
+  visibility: visible;
 }
 button:hover {
   background: linear-gradient(to bottom, #c2c2c2 5%, #ededed 100%);
