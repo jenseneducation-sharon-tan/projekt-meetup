@@ -21,7 +21,9 @@ exports[`Home should render page when go to "/"  1`] = `
         />
       </a>
        
-      <h2>
+      <h2
+        class="tagline"
+      >
         Passionate about something? Let's meetup !
       </h2>
        
@@ -36,6 +38,7 @@ exports[`Home should render page when go to "/"  1`] = `
           >
             <li>
               <a
+                class="eventNow"
                 href="#event"
               >
                 Current Events
@@ -44,6 +47,7 @@ exports[`Home should render page when go to "/"  1`] = `
              
             <li>
               <a
+                class="pastEvent"
                 href="#history"
               >
                 Past Events
@@ -112,6 +116,7 @@ exports[`Home should render page when go to "/"  1`] = `
         class="mail"
       >
         <a
+          class="email"
           href="mailto:mailus@meetup.com"
         >
           mailus@meetup.com
@@ -121,13 +126,17 @@ exports[`Home should render page when go to "/"  1`] = `
       <div
         class="call"
       >
-        <a>
+        <p
+          class="tel"
+        >
           072-99 9999
-        </a>
+        </p>
       </div>
     </div>
      
-    <span>
+    <span
+      class="clause"
+    >
       All rights reserved @ meetup.se
     </span>
   </div>

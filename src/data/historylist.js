@@ -13,7 +13,7 @@ const defaultData = {
     },
     {
       id: 10,
-      name: "Wedding planning - The must know",
+      name: "Wedding planning ",
       image: "wedding",
       date: "TUE, JAN 20,",
       time: " 14:00",

@@ -1,143 +1,160 @@
-/* import { mount, createLocalVue, RouterLinkStub } from "@vue/test-utils";
+import { shallowMount, createLocalVue, RouterLinkStub } from "@vue/test-utils";
 import Vuex from "vuex";
 import EventInfo from "@/views/EventInfo.vue";
+import Button from "@/components/Button.vue";
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 const localVue = createLocalVue();
+
 localVue.use(Vuex);
 
 describe("EventInfo", () => {
-  const store = new Vuex.Store({
-    state: {
-      id: 1,
-      name: "Meditation and well-being",
-      image: "meditate",
-      date: "THU, SEPT 17,",
-      time: " 17:30",
-      location: "Stockholm",
-      details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 10,
-	},
-	
-	getters : {
-		getEventById: (state) => {
-			return (id) => {
-			  return state.events.find((event) => event.id === id);
-			};
-		
-	};
-
-	const $route = {
-		$route: {
-		  path: "/eventinfo/1",
-		  params: { id: "1" },
-		},
-	  };
-
-
-  let event;
   let wrapper;
+
+  let attendList = [{ id: 1 }, { id: 2 }];
 
   let data = {
     events: [
       {
         id: 1,
         name: "Meditation and well-being",
-        image: "meditate",
+        image: "",
         date: "THU, SEPT 17,",
         time: " 17:30",
-        location: "Stockholm",
-        details:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
         attendees: 10,
       },
       {
         id: 2,
         name: "Halloween home deco ideas",
-        image: "halloween",
+        image: "",
         date: "TUE, OCT 20,",
         time: " 14:00",
-        location: "Stockholm",
-        details:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
         attendees: 15,
       },
       {
         id: 3,
         name: "Amigurumi learn to crochet",
-        image: "amigurumi",
+        image: "",
         date: "SUN, NOV 1,",
         time: " 09:30",
-        location: "Stockholm",
-        details:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
         attendees: 7,
+      },
+      {
+        id: 4,
+        name: "Serial programming session",
+        image: "",
+        date: "WED, SEPT 30,",
+        time: " 12:00",
+        attendees: 20,
+      },
+      {
+        id: 5,
+        name: "Fengshui your home for inner peace",
+        image: "",
+        date: "MON, NOV 30,",
+        time: " 10:30",
+        attendees: 18,
+      },
+      {
+        id: 6,
+        name: "Speak chinese - 学中文",
+        image: "",
+        date: "THU, DEC 10,",
+        time: " 11:30",
+        attendees: 10,
+      },
+      {
+        id: 7,
+        name: "Zumba your way to fitness",
+        image: "",
+        date: "SUN, SEPT 20,",
+        time: " 09:30",
+        attendees: 14,
+      },
+      {
+        id: 8,
+        name: "Spice and pan - Asian culinary",
+        image: "",
+        date: "TUE, DEC 1,",
+        time: " 10:00",
+        attendees: 8,
       },
     ],
   };
-
-  const store = new Vuex.Store({
-    modules: {
-      module: {
-        getters: {
-          getEventById: () => jest.fn(),
-          attend: () => jest.fn(),
-        },
-        actions: {
-          attendEvents: () => jest.fn(),
-        },
-      },
-    },
-  });
-
-  const $route = {
-    $route: {
-      path: "/eventinfo/1",
-      params: { id: "1" },
-    },
-  };
-
-  event = {
-    id: 1,
-    name: "Meditation and well-being",
-    image: "meditate",
-    date: "THU, SEPT 17,",
-    time: " 17:30",
-    location: "Stockholm",
-    details:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-    attendees: 10,
+  let mockEvent = {
+    id: 8,
+    name: "Spice and pan - Asian culinary",
+    image: "",
+    date: "TUE, DEC 1,",
+    time: " 10:00",
+    attendees: 8,
   };
 
   const Parent = {
     data() {
-      return data;
+      return { data, going: false };
     },
   };
-  wrapper = mount(EventInfo, {
-    parentComponent: Parent,
-    mocks: {
-      $route,
-    },
-    propsData: { event },
-    store,
-    stubs: {
-      RouterLink: RouterLinkStub,
-      AddDeleteButton: true,
-      Header: true,
-      Button: true,
+
+  const store = new Vuex.Store({
+    state: { attendList },
+    modules: {
+      module: {
+        getters: {
+          getEventById: () => jest.fn(),
+          attendList: () => jest.fn(),
+          attendButton: () => jest.fn(),
+          willAttendButton: () => jest.fn(),
+          isGoing: () => jest.fn(),
+          showAttend: () => jest.fn(),
+        },
+        actions: {
+          attendEvent: () => jest.fn(),
+          getAttendList: () => jest.fn(),
+        },
+      },
     },
   });
 
-  console.log("EventInfo: ", wrapper);
-  it("should display event info", () => {
-    //expect(wrapper.vm.$route.params.id).toBe("1");
-    console.log(wrapper);
-    //console.log(wrapper.props());
-    const expected = wrapper.find(".name").text();
-    //const link = wrapper.findComponent(RouterLinkStub);
-    //expect(link.props("to")).toBe(expected);
-    expect(expected).toBe(event.name);
-  }); 
+  beforeEach(() => {
+    wrapper = shallowMount(EventInfo, {
+      localVue,
+      Parent,
+      store,
+      mocks: {
+        $route: {
+          path: "/eventinfo/8",
+          params: { id: 8 },
+        },
+      },
+      stubs: {
+        Header,
+        RouterLink: RouterLinkStub,
+        Footer,
+      },
+    });
+  });
+
+  it("should display event name ", async () => {
+    const expected = mockEvent.name;
+    console.log("expected: ", expected);
+    const actual = wrapper.find(".name").text();
+    console.log("actual: ", actual);
+
+    expect(actual).toBe(expected);
+  });
+
+  /* it("should display button 'Attend' ", async () => {
+    const button = wrapper.findComponent(Button);
+    await button.trigger("click");  /// click native
+    expect(button.exists()).toBe(true);
+  }); */
+
+  /* it("should display button 'Going' if click on 'Attend' ", async () => {
+    const button = wrapper.find(".attend");
+	await button.trigger("click");  /// click native
+	const goingBtn = wrapper.find(".isGoing")
+    expect(goingBtn.exists()).toBe(true);
+  }); */
 });
- */

@@ -46,7 +46,7 @@ const defaultData = {
     },
     {
       id: 5,
-      name: "Fengshui your home for inner peace",
+      name: "Fengshui your home ",
       image: "fengshui",
       date: "MON, NOV 30,",
       time: " 10:30",

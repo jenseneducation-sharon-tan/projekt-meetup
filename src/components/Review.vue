@@ -1,22 +1,26 @@
 <template>
   <div class="form">
-    <div class="display-reviews">{{ displayReviewList }}</div>
     <div class="input-review">
       <textarea
+        id="review"
         type="text"
         v-model="review"
         placeholder="Comment is here"
         :class="{ hide: hide }"
       ></textarea>
-      <p v-show="showErrorMessage">Please key in your comments</p>
-      <button @click="addComment">Add Comment</button>
+      <p v-show="showErrorMessage" class="errorMsg">
+        Please key in your comments
+      </p>
+      <div class="padding">
+        <button @click="addComment" class="addComment">Add Comment</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["eventId", "displayReviewList"],
+  props: ["eventId"],
   data() {
     return {
       id: new Date(),
@@ -36,7 +40,6 @@ export default {
         };
         this.$store.dispatch("addNewReview", message);
         this.review = "";
-        this.hide = true;
       } else {
         this.showErrorMessage = !this.showErrorMessage;
       }
@@ -47,12 +50,16 @@ export default {
 
 <style scoped>
 textarea {
-  width: 280px;
+  width: 260px;
   height: 150px;
   padding: 10px;
 }
 
 .hide {
   display: none;
+}
+
+.padding {
+  padding: 20px;
 }
 </style>

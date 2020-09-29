@@ -10,7 +10,20 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe("Home", () => {
+  let wrapper;
+
+  const $route = {
+    path: "/",
+  };
+
+  let reviewList = [
+    { id: "2020-09-29T09:07:31.042Z", review: "Sucks big time", eventId: 10 },
+    { id: "2020-09-29T09:07:31.042Z", review: "Worth the time", eventId: 9 },
+  ];
+  let attendList = [{ id: 1 }, { id: 2 }];
+
   const store = new Vuex.Store({
+    state: { reviewList, attendList },
     modules: {
       module: {
         getters: {
@@ -20,14 +33,27 @@ describe("Home", () => {
         actions: {
           fetchEventList: () => jest.fn(),
           fetchPastEvents: () => jest.fn(),
+          getAttendList: () => jest.fn(),
+          fetchReviewList: () => jest.fn(),
         },
       },
     },
   });
 
-  const $route = {
-    path: "/",
-  };
+  beforeEach(() => {
+    wrapper = mount(Home, {
+      localVue,
+      mocks: {
+        $route,
+      },
+      store,
+      stubs: {
+        Header,
+        RouterLink: RouterLinkStub,
+        Footer,
+      },
+    });
+  });
 
   it('should render page when go to "/" ', () => {
     //Arrange
@@ -49,20 +75,6 @@ describe("Home", () => {
   });
 
   it("should show that Event.vue component exist ", async () => {
-    //Arrange
-    const wrapper = mount(Home, {
-      localVue,
-      mocks: {
-        $route,
-      },
-      store,
-      stubs: {
-        Header,
-        RouterLink: RouterLinkStub,
-        Footer,
-      },
-    });
-
     // find eventlist component
     const eventListComponent = wrapper.findComponent(EventList);
 

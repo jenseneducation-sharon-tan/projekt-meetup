@@ -3,23 +3,23 @@
     <router-link to="/">
       <img src="../assets/hangout.jpg" class="logo" />
     </router-link>
-    <h2>Passionate about something? Let's meetup !</h2>
+    <h2 class="tagline">Passionate about something? Let's meetup !</h2>
     <div class="topbar-responsive-links">
       <div class="top-bar-right" v-if="mainpage">
         <ul class="menu">
           <li>
-            <a href="#event">Current Events</a>
+            <a href="#event" class="eventNow">Current Events</a>
           </li>
-          <li><a href="#history">Past Events</a></li>
+          <li><a href="#history" class="pastEvent">Past Events</a></li>
         </ul>
       </div>
 
       <div class="not-homepage" v-if="!mainpage">
         <ul class="menu">
-          <router-link :to="{ path: '/', hash: '#event' }">
+          <router-link :to="{ path: '/' }">
             <li>Current Events</li>
           </router-link>
-          <router-link :to="{ path: '/', hash: '#history' }">
+          <router-link :to="{ path: '/' }">
             <li>Past Events</li>
           </router-link>
         </ul>

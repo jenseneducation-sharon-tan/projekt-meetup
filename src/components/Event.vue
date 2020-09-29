@@ -6,8 +6,7 @@
         <p class="date">{{ event.date }}</p>
         <p class="time">{{ event.time }}</p>
       </div>
-      <p class="event-name">{{ event.name }}</p>
-      <p class="number-attendees">Participants: {{ event.attendees }}</p>
+      <p class="name">{{ event.name }}</p>
     </div>
     <div class="show-going">
       <Button
@@ -17,19 +16,34 @@
         class="isGoing"
       />
     </div>
+    <div class="padding">
+      <div class="display-reviews-list" v-if="review">
+        <div
+          class="display-reviews"
+          v-for="review in showReviews"
+          :key="review.id"
+        >
+          {{ review.review }}
+        </div>
+      </div>
+    </div>
     <div class="comments" v-if="review">
-      <Button
-        :title="reviewButton"
-        :event="event"
-        v-if="writeReview !== event.id"
-        @click.native="showCommentBox(event.id)"
-      />
-      <div class="comments" v-if="review">
-        <Review
-          v-if="writeReview == event.id"
-          :eventId="event.id"
-          :displayReviewList="showReviews"
+      <div class="padding">
+        <Button
+          :title="reviewButton"
+          :event="event"
+          v-if="writeReview !== event.id"
+          @click.native="showCommentBox(event.id)"
         />
+      </div>
+      <div class="padding">
+        <div class="comments" v-if="review">
+          <Review
+            v-if="writeReview == event.id"
+            :eventId="event.id"
+            :displayReviewList="showReviews"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -52,16 +66,15 @@ export default {
     ...mapGetters([
       "reviewButton",
       "writeReview",
-      "hide",
       "willAttendButton",
       "isGoing",
       "reviewList",
     ]),
     confirmGoing() {
-      let storage = this.$store.state.attendList;
+      let storedAttendList = this.$store.state.attendList;
       let going;
-      if (storage.length != 0) {
-        let attended = storage.find((id) => id == this.event.id);
+      if (storedAttendList.length != 0) {
+        let attended = storedAttendList.find((id) => id == this.event.id);
         if (attended) {
           going = true;
         } else {
@@ -78,15 +91,18 @@ export default {
       let selectedEventToComment = reviewList.filter(
         (item) => item.eventId == this.event.id
       );
+
       return selectedEventToComment;
     },
   },
-  methods: mapActions([
-    "showCommentBox",
-    "attendEvent",
-    "getAttendList",
-    "fetchReviewList",
-  ]),
+  methods: {
+    ...mapActions([
+      "showCommentBox",
+      "attendEvent",
+      "getAttendList",
+      "fetchReviewList",
+    ]),
+  },
   created() {
     this.getAttendList();
     this.fetchReviewList();
@@ -103,7 +119,7 @@ export default {
   box-shadow: 1px 1px 8px #888888;
   border-radius: 10px;
   width: 280px;
-  height: 370px;
+  height: auto;
 }
 
 img {
@@ -149,5 +165,15 @@ button {
 .isGoing {
   color: white;
   background: green;
+}
+
+.display-reviews-list {
+  border: 2px gray solid;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.padding {
+  padding: 10px;
 }
 </style>

@@ -1,30 +1,41 @@
 <template>
   <div class="wrapper-event-info">
     <Header />
-    <div class="event-info">
-      <img v-bind:src="require(`@/assets/${event.image}.jpg`)" />
-      <p>id: {{ event.id }}</p>
-      <p class="name">{{ event.name }}</p>
-      <p class="time">{{ event.time }}</p>
-      <p class="details">{{ event.details }}</p>
-      <Button
-        :event="event"
-        :title="willAttendButton"
-        v-if="confirmGoing"
-        class="isGoing"
+    <div class="event-info center">
+      <img
+        v-if="event.image"
+        v-bind:src="require(`@/assets/${event.image}.jpg`)"
+        class="margin-bottom-20"
       />
-      <Button
-        :event="event"
-        :title="attendButton"
-        @click.native="attendEvent(event.id)"
-        v-else
-      />
+      <div class="padding">
+        <p class="name margin-bottom-20">
+          {{ event.name }}<span>Time: {{ event.time }}</span>
+        </p>
+        <p class="margin-bottom-20">Event details:</p>
+        <p class="details margin-bottom-20">{{ event.details }}</p>
+        <Button
+          :event="event"
+          :title="willAttendButton"
+          v-if="confirmGoing"
+          class="isGoing margin-bottom-20"
+        />
+        <Button
+          :event="event"
+          :title="attendButton"
+          @click.native="attendEvent(event.id)"
+          v-else
+          class="attend"
+        />
+      </div>
     </div>
+
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Button from "../components/Button";
 import { mapGetters, mapActions } from "vuex";
 
@@ -32,6 +43,7 @@ export default {
   components: {
     Header,
     Button,
+    Footer,
   },
   data() {
     return {
@@ -52,11 +64,11 @@ export default {
       return this.getEventById(id);
     },
     confirmGoing() {
-      let storage = this.$store.state.attendList;
+      let storedAttendList = this.$store.state.attendList;
       let going;
-      if (storage.length != 0) {
-        let attended = storage.find((id) => id == this.event.id);
-        console.log(this.event.id);
+      if (storedAttendList.length != 0) {
+        let attended = storedAttendList.find((id) => id == this.event.id);
+
         if (attended) {
           going = true;
         } else {
@@ -77,8 +89,32 @@ export default {
 </script>
 
 <style scoped>
+img {
+  border-radius: 20px;
+  width: 700px;
+  height: 400px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+
+  padding: 10px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+span {
+  margin-left: 20px;
+}
+
 .isGoing {
   color: white;
   background: green;
+}
+.padding {
+  padding: 10px;
 }
 </style>
