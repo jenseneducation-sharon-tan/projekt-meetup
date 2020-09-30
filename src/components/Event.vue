@@ -32,14 +32,19 @@
         <Button
           :title="reviewButton"
           :event="event"
-          v-if="writeReview !== event.id"
+          v-if="!showCommenttext"
           @click.native="showCommentBox(event.id)"
         />
       </div>
       <div class="padding">
         <div class="comments" v-if="review">
-          <Review
+          <!--    <Review
             v-if="writeReview == event.id"
+            :eventId="event.id"
+            :displayReviewList="showReviews"
+          /> -->
+          <Review
+            v-if="showCommenttext"
             :eventId="event.id"
             :displayReviewList="showReviews"
           />
@@ -93,6 +98,10 @@ export default {
       );
 
       return selectedEventToComment;
+    },
+
+    showCommenttext() {
+      return this.writeReview == this.event.id;
     },
   },
   methods: {

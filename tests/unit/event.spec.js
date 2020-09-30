@@ -95,28 +95,20 @@ describe("Event", () => {
     expect(buttonText).toBe("Leave a review");
   });
 
-  it("should display Review component when click on Button component ", async () => {
-    /*   const showReviewClickMock = jest.fn();*/
+  it("should call the function when click on Button component ", async () => {
     const button = wrapper.findComponent(Button);
-    console.log("button: ", button);
 
-    /*  wrapper.setMethods({ showReviewClickMock }); */
-
+    wrapper.vm.showCommentBox = jest.fn();
     await button.trigger("click");
 
-    /*await button.vm.$emit("click"); //trigger @click.native??*/
-
-    const reviewComponent = wrapper.findComponent(Review);
-    console.log("review: ", reviewComponent);
-
-    expect(reviewComponent.exists()).toBe(true);
+    expect(wrapper.vm.showCommentBox).toHaveBeenCalled();
   });
 
-  /*  it("should display review list for eventId 9", () => {
-    const expected = 2;
-    const actual = wrapper.findAll(".display-reviews").length;
-    console.log(actual);
+  it("should display button 'Leave a review' for Past Event list", () => {
+    const button = wrapper.findComponent(Button);
+    /*  const buttonText = button.text(); */
 
-    expect(actual).toBe(expected);
-  }); */
+    expect(button.exists()).toBe(true);
+    /* expect(buttonText).toBe("Leave a review"); */
+  });
 });

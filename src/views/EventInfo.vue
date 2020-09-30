@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper-event-info">
     <Header />
-    <div class="event-info center">
+    <div class="event-info center" v-if="event">
       <img
         v-if="event.image"
         v-bind:src="require(`@/assets/${event.image}.jpg`)"
@@ -9,8 +9,9 @@
       />
       <div class="padding">
         <p class="name margin-bottom-20">
-          {{ event.name }}<span>Time: {{ event.time }}</span>
+          {{ event.name }} <span>Time: {{ event.time }}</span>
         </p>
+
         <p class="margin-bottom-20">Event details:</p>
         <p class="details margin-bottom-20">{{ event.details }}</p>
         <Button
@@ -57,7 +58,6 @@ export default {
       "attendButton",
       "willAttendButton",
       "isGoing",
-      "showAttend",
     ]),
     event() {
       let id = parseInt(this.$route.params.id);

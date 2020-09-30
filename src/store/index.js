@@ -15,7 +15,6 @@ export default new Vuex.Store({
     writeReview: false,
     isGoing: false,
     hide: false,
-    showAttend: false,
     attendButton: "Attend",
     willAttendButton: "Going",
     reviewButton: "Leave a review",

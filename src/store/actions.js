@@ -46,10 +46,12 @@ const actions = {
   },
 
   showCommentBox({ commit, state }, id) {
+    console.log("showcommentbox");
     let pastEventList = state.eventHistory;
     let clickedEvent = pastEventList.find((item) => item.id == id);
 
     if (clickedEvent.id) {
+      console.log(clickedEvent.id);
       commit("showReview", id);
     }
   },

@@ -23,7 +23,7 @@ export default {
   props: ["eventId"],
   data() {
     return {
-      id: new Date(),
+      id: new Date().toLocaleTimeString(),
       review: "",
       showErrorMessage: false,
       hide: false,

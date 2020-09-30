@@ -34,9 +34,6 @@ const getters = {
   hide: (state) => {
     return state.hide;
   },
-  showAttend: (state) => {
-    state.showAttend;
-  },
 };
 
 export default getters;
