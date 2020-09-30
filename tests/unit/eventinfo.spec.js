@@ -128,7 +128,7 @@ describe("EventInfo", () => {
     modules: {
       module: {
         getters: {
-          getEventById: () => jest.fn().mockReturnThis(mockEvent),
+          getEventById: () => jest.fn().mockReturnValue(mockEvent),
           attendList: () => jest.fn().mockReturnValue(attendList),
           attendButton: () => jest.fn().mockReturnThis("Attend"),
           willAttendButton: () => jest.fn().mockReturnValue(false),
@@ -151,7 +151,7 @@ describe("EventInfo", () => {
       mocks: {
         $route: {
           path: "/eventinfo/8",
-          params: { id: 8 },
+          params: { id: "8" },
         },
       },
       stubs: {
@@ -162,10 +162,11 @@ describe("EventInfo", () => {
     });
   });
 
-  it("should be able to find <div> event-info ", async () => {
-    const actual = wrapper.find(".event-info");
-    /*   expect(actual).toBe(expected); */
-    expect(actual.exists()).toBe(true);
+  it("should be able to display details of the event ", async () => {
+    const expected = mockEvent.details;
+    const actual = wrapper.find(".details").text();
+
+    expect(actual).toBe(expected);
   });
 
   it("should call on the function when click on Button 'Attend' ", async () => {
