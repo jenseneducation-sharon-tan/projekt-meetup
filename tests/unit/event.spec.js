@@ -106,9 +106,7 @@ describe("Event", () => {
 
   it("should display button 'Leave a review' for Past Event list", () => {
     const button = wrapper.findComponent(Button);
-    /*  const buttonText = button.text(); */
 
     expect(button.exists()).toBe(true);
-    /* expect(buttonText).toBe("Leave a review"); */
   });
 });

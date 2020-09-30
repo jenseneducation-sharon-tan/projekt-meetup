@@ -9,7 +9,13 @@
           :event="event"
         >
           <router-link :to="'/eventinfo/' + event.id">
-            <Event :event="event" :review="review" />
+            <Event
+              :event="event"
+              :review="review"
+              v-bind:class="{
+                attendHeight: true,
+              }"
+            />
           </router-link>
         </div>
       </div>
@@ -53,5 +59,9 @@ a {
 h2 {
   font-family: "Hammersmith One", sans-serif;
   font-size: 3rem;
+}
+
+.attendHeight {
+  height: 400px;
 }
 </style>

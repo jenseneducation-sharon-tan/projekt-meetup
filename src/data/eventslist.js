@@ -9,7 +9,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 10,
+      type: "attend",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 15,
+      type: "attend",
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 7,
+      type: "attend",
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 20,
+      type: "attend",
     },
     {
       id: 5,
@@ -53,7 +53,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 18,
+      type: "attend",
     },
     {
       id: 6,
@@ -64,7 +64,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 10,
+      type: "attend",
     },
     {
       id: 7,
@@ -75,7 +75,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 14,
+      type: "attend",
     },
     {
       id: 8,
@@ -86,7 +86,7 @@ const defaultData = {
       location: "Stockholm",
       details:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempora mollitia hic sequi quaerat optio neque! Quibusdam totam ut fuga perferendis illum odio necessitatibus! Repudiandae ipsam omnis magni laudantium eaque",
-      attendees: 8,
+      type: "attend",
     },
   ],
 };
