@@ -91,7 +91,6 @@ const defaultData = {
   ],
 };
 
-// Försök 2, localStorage
 function getEvents() {
   const LS_KEY = "viewlist-events";
   let fromLs = localStorage.getItem(LS_KEY);
@@ -103,16 +102,5 @@ function getEvents() {
 
   return JSON.parse(fromLs);
 }
-
-/*
-// Försök 1, enklast möjliga
-function getAnimals() {
-    return [
-        { id: 1, animal: 'häst', from: 'Norge' },
-        { id: 2, animal: 'ekorre', from: 'Schweiz' },
-        { id: 3, animal: 'giraff', from: 'Kenya' },
-        { id: 5, animal: 'yeti', from: 'Alperna' }
-    ]
-}*/
 
 export { getEvents };

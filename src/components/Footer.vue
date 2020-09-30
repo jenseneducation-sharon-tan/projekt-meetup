@@ -3,11 +3,9 @@
     <h2>Contact us</h2>
     <div class="contact">
       <div class="mail">
-        <!--   <img src="@/assets/mail.svg" alt /> -->
         <a class="email" href="mailto:mailus@meetup.com">mailus@meetup.com</a>
       </div>
       <div class="call">
-        <!--  <img src="@/assets/call.svg" alt /> -->
         <p class="tel">072-99 9999</p>
       </div>
     </div>

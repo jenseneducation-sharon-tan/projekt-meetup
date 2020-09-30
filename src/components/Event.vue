@@ -38,11 +38,6 @@
       </div>
       <div class="padding">
         <div class="comments" v-if="review">
-          <!--    <Review
-            v-if="writeReview == event.id"
-            :eventId="event.id"
-            :displayReviewList="showReviews"
-          /> -->
           <Review
             v-if="showCommenttext"
             :eventId="event.id"
